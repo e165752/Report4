@@ -1,24 +1,24 @@
 package jp.ac.uryukyu.ie.e165752;
 
 /**
- * 敵クラス。
- *  String name; //敵の名前
- *  int hitPoint; //敵のHP
- *  int attack; //敵の攻撃力
- *  boolean dead; //敵の生死状態。true=死亡。
- * Created by tnal on 2016/11/13.
+ * 生物クラス。
+ *  String name; //スライム,勇者の名前
+ *  int hitPoint; //スライム,勇者のHP
+ *  int attack; //スライム,勇者の攻撃力
+ *  boolean dead; //スライム,勇者の生死状態。true=死亡。
+ *  Created by komineakina on 2016/11/24.
  */
 public class LivingThing {
-    String name;
-    int hitPoint;
-    int attack;
-    boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
-     * @param name モンスター名
-     * @param maximumHP モンスターのHP
-     * @param attack モンスターの攻撃力
+     * @param name モンスター名,勇者の名前
+     * @param maximumHP モンスター,勇者のHP
+     * @param attack モンスター,勇者の攻撃力
      */
     public LivingThing (String name, int maximumHP, int attack) {
         this.name = name;
@@ -32,19 +32,30 @@ public class LivingThing {
      * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。
      * @return boolean
      */
+
     public boolean isDead() {
         return dead;
+    }
+
+    public void setDead(boolean dead){
+        this.dead = dead;
     }
 
     public String getName(){
         return name;
     }
 
+    public int getHitPoint(){
+        return hitPoint;
+    }
+
+
     /**
-     * Heroへ攻撃するメソッド。
-     * attackに応じて乱数でダメージを算出し、hero.wounded()によりダメージ処理を実行。
+     * 攻撃するメソッド。
+     * attackに応じて乱数でダメージを算出し、wounded()によりダメージ処理を実行。
      * @param oppone 攻撃対象
      */
+
     public void attack(LivingThing oppone){
         int damage = 0;
         if (dead == false) {
